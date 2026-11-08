@@ -4,6 +4,7 @@ Loss is computed on the answer tokens only (prompt labels = -100). Each epoch sa
 adapter and a validation loss; pick the epoch by VALIDATION macro-F1 (src.evaluate).
 """
 import json
+import os
 import random
 import time
 from pathlib import Path
@@ -16,8 +17,8 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, get_cosine_schedul
 
 from src.prompts import build_messages, format_target
 
-MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
-OUT = Path("outputs/lora_r16")
+MODEL = os.environ.get("BASE_MODEL", "Qwen/Qwen2.5-1.5B-Instruct")
+OUT = Path(os.environ.get("OUT_DIR", "outputs/lora_r16"))
 CFG = dict(seed=42, max_len=1024, epochs=3, lr=2e-4, micro_bs=1, grad_accum=16,
            warmup_ratio=0.1, weight_decay=0.0, max_grad_norm=1.0,
            lora_r=16, lora_alpha=32, lora_dropout=0.05,

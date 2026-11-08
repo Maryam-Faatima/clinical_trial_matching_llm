@@ -1,0 +1,661 @@
+{
+  "device": "cuda",
+  "stability": {
+    "naive_has_nan_or_inf": true,
+    "tiled_has_nan_or_inf": false,
+    "tiled_max_err_vs_fp64": 7.331365213580909e-06,
+    "max_score": 211.04820251464844
+  },
+  "correctness": [
+    {
+      "note": "tiny",
+      "B": 1,
+      "H": 1,
+      "Lq": 4,
+      "Lk": 4,
+      "D": 2,
+      "causal": true,
+      "block": [
+        2,
+        2
+      ],
+      "q_scale": 1.0,
+      "dtype": "float64",
+      "ref_max": 0.0,
+      "tiled_max": 1.1102230246251565e-16,
+      "tiled_mean": 2.2985086056692694e-17,
+      "tiled_vs_ref_max": 1.1102230246251565e-16,
+      "pass": true
+    },
+    {
+      "note": "tiny",
+      "B": 1,
+      "H": 1,
+      "Lq": 4,
+      "Lk": 4,
+      "D": 2,
+      "causal": true,
+      "block": [
+        2,
+        2
+      ],
+      "q_scale": 1.0,
+      "dtype": "float32",
+      "ref_max": 3.157224497118971e-08,
+      "tiled_max": 1.443998376426947e-08,
+      "tiled_mean": 5.81145052393206e-09,
+      "tiled_vs_ref_max": 3.725290298461914e-08,
+      "sdpa_max": 2.0220504881596213e-08,
+      "pass": true
+    },
+    {
+      "note": "tiny",
+      "B": 1,
+      "H": 1,
+      "Lq": 4,
+      "Lk": 4,
+      "D": 2,
+      "causal": true,
+      "block": [
+        2,
+        2
+      ],
+      "q_scale": 1.0,
+      "dtype": "float16",
+      "ref_max": 9.883854571013373e-05,
+      "tiled_max": 9.883854571013373e-05,
+      "tiled_mean": 2.699997242783421e-05,
+      "tiled_vs_ref_max": 0.0,
+      "sdpa_max": 9.883854571013373e-05,
+      "pass": true
+    },
+    {
+      "note": "causal, divisible",
+      "B": 2,
+      "H": 3,
+      "Lq": 64,
+      "Lk": 64,
+      "D": 32,
+      "causal": true,
+      "block": [
+        16,
+        16
+      ],
+      "q_scale": 1.0,
+      "dtype": "float64",
+      "ref_max": 0.0,
+      "tiled_max": 1.2212453270876722e-15,
+      "tiled_mean": 8.503330167059879e-17,
+      "tiled_vs_ref_max": 1.2212453270876722e-15,
+      "pass": true
+    },
+    {
+      "note": "causal, divisible",
+      "B": 2,
+      "H": 3,
+      "Lq": 64,
+      "Lk": 64,
+      "D": 32,
+      "causal": true,
+      "block": [
+        16,
+        16
+      ],
+      "q_scale": 1.0,
+      "dtype": "float32",
+      "ref_max": 5.854115446846109e-07,
+      "tiled_max": 3.542413908874664e-07,
+      "tiled_mean": 3.01607895558546e-08,
+      "tiled_vs_ref_max": 5.960464477539062e-07,
+      "sdpa_max": 6.450161894600015e-07,
+      "pass": true
+    },
+    {
+      "note": "causal, divisible",
+      "B": 2,
+      "H": 3,
+      "Lq": 64,
+      "Lk": 64,
+      "D": 32,
+      "causal": true,
+      "block": [
+        16,
+        16
+      ],
+      "q_scale": 1.0,
+      "dtype": "float16",
+      "ref_max": 0.0009354871995594927,
+      "tiled_max": 0.0009354871995594927,
+      "tiled_mean": 4.255733616328974e-05,
+      "tiled_vs_ref_max": 0.0001220703125,
+      "sdpa_max": 0.0009354871995594927,
+      "pass": true
+    },
+    {
+      "note": "causal, length not divisible by block",
+      "B": 1,
+      "H": 4,
+      "Lq": 100,
+      "Lk": 100,
+      "D": 64,
+      "causal": true,
+      "block": [
+        32,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float64",
+      "ref_max": 0.0,
+      "tiled_max": 8.881784197001252e-16,
+      "tiled_mean": 4.843149342170894e-17,
+      "tiled_vs_ref_max": 8.881784197001252e-16,
+      "pass": true
+    },
+    {
+      "note": "causal, length not divisible by block",
+      "B": 1,
+      "H": 4,
+      "Lq": 100,
+      "Lk": 100,
+      "D": 64,
+      "causal": true,
+      "block": [
+        32,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float32",
+      "ref_max": 6.791122328375643e-07,
+      "tiled_max": 6.195075880621737e-07,
+      "tiled_mean": 3.758055078832731e-08,
+      "tiled_vs_ref_max": 4.76837158203125e-07,
+      "sdpa_max": 7.387168776129549e-07,
+      "pass": true
+    },
+    {
+      "note": "causal, length not divisible by block",
+      "B": 1,
+      "H": 4,
+      "Lq": 100,
+      "Lk": 100,
+      "D": 64,
+      "causal": true,
+      "block": [
+        32,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float16",
+      "ref_max": 0.0006592440911350472,
+      "tiled_max": 0.0006592440911350472,
+      "tiled_mean": 3.5754639688598285e-05,
+      "tiled_vs_ref_max": 0.000244140625,
+      "sdpa_max": 0.0006592440911350472,
+      "pass": true
+    },
+    {
+      "note": "Lq<Lk (queries are last positions)",
+      "B": 1,
+      "H": 2,
+      "Lq": 37,
+      "Lk": 129,
+      "D": 16,
+      "causal": true,
+      "block": [
+        16,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float64",
+      "ref_max": 0.0,
+      "tiled_max": 3.885780586188048e-16,
+      "tiled_mean": 4.8198801287845577e-17,
+      "tiled_vs_ref_max": 3.885780586188048e-16,
+      "pass": true
+    },
+    {
+      "note": "Lq<Lk (queries are last positions)",
+      "B": 1,
+      "H": 2,
+      "Lq": 37,
+      "Lk": 129,
+      "D": 16,
+      "causal": true,
+      "block": [
+        16,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float32",
+      "ref_max": 1.7618837389044018e-07,
+      "tiled_max": 1.6660897578235634e-07,
+      "tiled_mean": 1.891078055565118e-08,
+      "tiled_vs_ref_max": 1.7881393432617188e-07,
+      "pass": true
+    },
+    {
+      "note": "Lq<Lk (queries are last positions)",
+      "B": 1,
+      "H": 2,
+      "Lq": 37,
+      "Lk": 129,
+      "D": 16,
+      "causal": true,
+      "block": [
+        16,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float16",
+      "ref_max": 0.00021554126680178864,
+      "tiled_max": 0.00021554126680178864,
+      "tiled_mean": 1.9772621690554458e-05,
+      "tiled_vs_ref_max": 0.0001220703125,
+      "pass": true
+    },
+    {
+      "note": "non-causal",
+      "B": 2,
+      "H": 2,
+      "Lq": 128,
+      "Lk": 128,
+      "D": 64,
+      "causal": false,
+      "block": [
+        32,
+        64
+      ],
+      "q_scale": 1.0,
+      "dtype": "float64",
+      "ref_max": 0.0,
+      "tiled_max": 6.661338147750939e-16,
+      "tiled_mean": 4.748462556064787e-17,
+      "tiled_vs_ref_max": 6.661338147750939e-16,
+      "pass": true
+    },
+    {
+      "note": "non-causal",
+      "B": 2,
+      "H": 2,
+      "Lq": 128,
+      "Lk": 128,
+      "D": 64,
+      "causal": false,
+      "block": [
+        32,
+        64
+      ],
+      "q_scale": 1.0,
+      "dtype": "float32",
+      "ref_max": 4.483933128129891e-07,
+      "tiled_max": 3.4614365906904254e-07,
+      "tiled_mean": 3.0160326468466505e-08,
+      "tiled_vs_ref_max": 2.980232238769531e-07,
+      "sdpa_max": 4.4958164002739665e-07,
+      "pass": true
+    },
+    {
+      "note": "non-causal",
+      "B": 2,
+      "H": 2,
+      "Lq": 128,
+      "Lk": 128,
+      "D": 64,
+      "causal": false,
+      "block": [
+        32,
+        64
+      ],
+      "q_scale": 1.0,
+      "dtype": "float16",
+      "ref_max": 0.00024245422776214554,
+      "tiled_max": 0.00024245422776214554,
+      "tiled_mean": 1.9549518066617965e-05,
+      "tiled_vs_ref_max": 0.0001220703125,
+      "sdpa_max": 0.00025395211803302953,
+      "pass": true
+    },
+    {
+      "note": "single query = one KV-cache decode step",
+      "B": 1,
+      "H": 2,
+      "Lq": 1,
+      "Lk": 256,
+      "D": 64,
+      "causal": true,
+      "block": [
+        32,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float64",
+      "ref_max": 0.0,
+      "tiled_max": 1.3877787807814457e-16,
+      "tiled_mean": 2.673723025479243e-17,
+      "tiled_vs_ref_max": 1.3877787807814457e-16,
+      "pass": true
+    },
+    {
+      "note": "single query = one KV-cache decode step",
+      "B": 1,
+      "H": 2,
+      "Lq": 1,
+      "Lk": 256,
+      "D": 64,
+      "causal": true,
+      "block": [
+        32,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float32",
+      "ref_max": 5.3423901358318204e-08,
+      "tiled_max": 6.170097996416324e-08,
+      "tiled_mean": 1.5447476205595806e-08,
+      "tiled_vs_ref_max": 3.725290298461914e-08,
+      "pass": true
+    },
+    {
+      "note": "single query = one KV-cache decode step",
+      "B": 1,
+      "H": 2,
+      "Lq": 1,
+      "Lk": 256,
+      "D": 64,
+      "causal": true,
+      "block": [
+        32,
+        32
+      ],
+      "q_scale": 1.0,
+      "dtype": "float16",
+      "ref_max": 5.967735462480972e-05,
+      "tiled_max": 5.967735462480972e-05,
+      "tiled_mean": 1.2526888306328799e-05,
+      "tiled_vs_ref_max": 0.0,
+      "pass": true
+    },
+    {
+      "note": "large scores (x10)",
+      "B": 1,
+      "H": 2,
+      "Lq": 256,
+      "Lk": 256,
+      "D": 64,
+      "causal": true,
+      "block": [
+        64,
+        64
+      ],
+      "q_scale": 10.0,
+      "dtype": "float64",
+      "ref_max": 0.0,
+      "tiled_max": 4.440892098500626e-15,
+      "tiled_mean": 2.317259800124051e-16,
+      "tiled_vs_ref_max": 4.440892098500626e-15,
+      "pass": true
+    },
+    {
+      "note": "large scores (x10)",
+      "B": 1,
+      "H": 2,
+      "Lq": 256,
+      "Lk": 256,
+      "D": 64,
+      "causal": true,
+      "block": [
+        64,
+        64
+      ],
+      "q_scale": 10.0,
+      "dtype": "float32",
+      "ref_max": 1.3399118842127855e-05,
+      "tiled_max": 1.3399118842127855e-05,
+      "tiled_mean": 3.730737166435479e-07,
+      "tiled_vs_ref_max": 1.430511474609375e-06,
+      "sdpa_max": 1.2356037558558519e-05,
+      "pass": true
+    },
+    {
+      "note": "large scores (x10)",
+      "B": 1,
+      "H": 2,
+      "Lq": 256,
+      "Lk": 256,
+      "D": 64,
+      "causal": true,
+      "block": [
+        64,
+        64
+      ],
+      "q_scale": 10.0,
+      "dtype": "float16",
+      "ref_max": 0.0009682488027658032,
+      "tiled_max": 0.0009682488027658032,
+      "tiled_mean": 0.00011243000012205042,
+      "tiled_vs_ref_max": 0.0009765625,
+      "sdpa_max": 0.001129400066122166,
+      "pass": true
+    },
+    {
+      "note": "model-like (12 heads, D=128)",
+      "B": 1,
+      "H": 12,
+      "Lq": 512,
+      "Lk": 512,
+      "D": 128,
+      "causal": true,
+      "block": [
+        128,
+        128
+      ],
+      "q_scale": 1.0,
+      "dtype": "float64",
+      "ref_max": 0.0,
+      "tiled_max": 1.5543122344752192e-15,
+      "tiled_mean": 4.8261155841795354e-17,
+      "tiled_vs_ref_max": 1.5543122344752192e-15,
+      "pass": true
+    },
+    {
+      "note": "model-like (12 heads, D=128)",
+      "B": 1,
+      "H": 12,
+      "Lq": 512,
+      "Lk": 512,
+      "D": 128,
+      "causal": true,
+      "block": [
+        128,
+        128
+      ],
+      "q_scale": 1.0,
+      "dtype": "float32",
+      "ref_max": 1.357484535446929e-06,
+      "tiled_max": 1.2475694894931166e-06,
+      "tiled_mean": 3.583448216505811e-08,
+      "tiled_vs_ref_max": 7.152557373046875e-07,
+      "sdpa_max": 1.2382752458961477e-06,
+      "pass": true
+    },
+    {
+      "note": "model-like (12 heads, D=128)",
+      "B": 1,
+      "H": 12,
+      "Lq": 512,
+      "Lk": 512,
+      "D": 128,
+      "causal": true,
+      "block": [
+        128,
+        128
+      ],
+      "q_scale": 1.0,
+      "dtype": "float16",
+      "ref_max": 0.0009304718781399934,
+      "tiled_max": 0.0009304718781399934,
+      "tiled_mean": 1.832416748478332e-05,
+      "tiled_vs_ref_max": 0.00048828125,
+      "sdpa_max": 0.0009304718781399934,
+      "pass": true
+    }
+  ],
+  "gpu": "Tesla T4",
+  "benchmark": [
+    {
+      "L": 256,
+      "impl": "reference",
+      "ms": 0.5899729999327974,
+      "peak_mib": 12.01171875
+    },
+    {
+      "L": 256,
+      "impl": "tiled_python(128)",
+      "ms": 1.607084000170289,
+      "peak_mib": 7.529296875
+    },
+    {
+      "L": 256,
+      "impl": "sdpa_math",
+      "ms": 0.6225020001693338,
+      "peak_mib": 13.00341796875
+    },
+    {
+      "L": 256,
+      "impl": "sdpa_mem_efficient",
+      "ms": 0.09176899993690313,
+      "peak_mib": 0.75
+    },
+    {
+      "L": 256,
+      "impl": "sdpa_flash",
+      "ms": null,
+      "peak_mib": null,
+      "error": "No available kernel. Aborting execution."
+    },
+    {
+      "L": 512,
+      "impl": "reference",
+      "ms": 1.2758180000673747,
+      "peak_mib": 42.0234375
+    },
+    {
+      "L": 512,
+      "impl": "tiled_python(128)",
+      "ms": 4.512348000389466,
+      "peak_mib": 8.279296875
+    },
+    {
+      "L": 512,
+      "impl": "sdpa_math",
+      "ms": 1.069030000053317,
+      "peak_mib": 40.00634765625
+    },
+    {
+      "L": 512,
+      "impl": "sdpa_mem_efficient",
+      "ms": 0.14186999987941817,
+      "peak_mib": 1.5
+    },
+    {
+      "L": 512,
+      "impl": "sdpa_flash",
+      "ms": null,
+      "peak_mib": null,
+      "error": "No available kernel. Aborting execution."
+    },
+    {
+      "L": 1024,
+      "impl": "reference",
+      "ms": 4.437896000126784,
+      "peak_mib": 156.046875
+    },
+    {
+      "L": 1024,
+      "impl": "tiled_python(128)",
+      "ms": 14.701314000376442,
+      "peak_mib": 9.779296875
+    },
+    {
+      "L": 1024,
+      "impl": "sdpa_math",
+      "ms": 3.662812000129634,
+      "peak_mib": 136.51220703125
+    },
+    {
+      "L": 1024,
+      "impl": "sdpa_mem_efficient",
+      "ms": 0.3268139998908737,
+      "peak_mib": 3.0
+    },
+    {
+      "L": 1024,
+      "impl": "sdpa_flash",
+      "ms": null,
+      "peak_mib": null,
+      "error": "No available kernel. Aborting execution."
+    },
+    {
+      "L": 2048,
+      "impl": "reference",
+      "ms": 16.87273900006403,
+      "peak_mib": 600.09375
+    },
+    {
+      "L": 2048,
+      "impl": "tiled_python(128)",
+      "ms": 51.13389400003143,
+      "peak_mib": 12.779296875
+    },
+    {
+      "L": 2048,
+      "impl": "sdpa_math",
+      "ms": 13.912962000176776,
+      "peak_mib": 496.02392578125
+    },
+    {
+      "L": 2048,
+      "impl": "sdpa_mem_efficient",
+      "ms": 1.1158379998050805,
+      "peak_mib": 6.0
+    },
+    {
+      "L": 2048,
+      "impl": "sdpa_flash",
+      "ms": null,
+      "peak_mib": null,
+      "error": "No available kernel. Aborting execution."
+    },
+    {
+      "L": 4096,
+      "impl": "reference",
+      "ms": 66.97489399994083,
+      "peak_mib": 2352.1875
+    },
+    {
+      "L": 4096,
+      "impl": "tiled_python(128)",
+      "ms": 191.27929700016466,
+      "peak_mib": 18.779296875
+    },
+    {
+      "L": 4096,
+      "impl": "sdpa_math",
+      "ms": 55.24636100017233,
+      "peak_mib": 1888.04736328125
+    },
+    {
+      "L": 4096,
+      "impl": "sdpa_mem_efficient",
+      "ms": 3.4782950001499557,
+      "peak_mib": 12.0
+    },
+    {
+      "L": 4096,
+      "impl": "sdpa_flash",
+      "ms": null,
+      "peak_mib": null,
+      "error": "No available kernel. Aborting execution."
+    }
+  ]
+}
