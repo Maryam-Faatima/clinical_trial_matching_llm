@@ -17,6 +17,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, get_cosine_schedul
 
 from src.prompts import build_messages, format_target
 
+import os
 MODEL = os.environ.get("BASE_MODEL", "Qwen/Qwen2.5-1.5B-Instruct")
 OUT = Path(os.environ.get("OUT_DIR", "outputs/lora_r16"))
 CFG = dict(seed=42, max_len=1024, epochs=3, lr=2e-4, micro_bs=1, grad_accum=16,
