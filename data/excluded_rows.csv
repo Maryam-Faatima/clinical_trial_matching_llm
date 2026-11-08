@@ -1,0 +1,2 @@
+annotation_id,patient_id,trial_id,criterion_type,reason,split
+883,sigir-201519,NCT02213809,exclusion,missing_criterion_text,train
