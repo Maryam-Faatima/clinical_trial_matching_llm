@@ -1,0 +1,381 @@
+{
+  "dtype": "fp16",
+  "synthetic": [
+    {
+      "equal": true,
+      "n_tokens": 32,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0556640625,
+      "mean_abs_logit_diff": 0.005488411523401737,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.09375,
+      "input_len": 64,
+      "new_tokens": 32
+    },
+    {
+      "equal": true,
+      "n_tokens": 64,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0546875,
+      "mean_abs_logit_diff": 0.004844235721975565,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.015625,
+      "input_len": 256,
+      "new_tokens": 64
+    },
+    {
+      "equal": true,
+      "n_tokens": 128,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0546875,
+      "mean_abs_logit_diff": 0.004878553561866283,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.015625,
+      "input_len": 512,
+      "new_tokens": 128
+    },
+    {
+      "equal": true,
+      "n_tokens": 128,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0400390625,
+      "mean_abs_logit_diff": 0.004426996223628521,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.0,
+      "input_len": 1024,
+      "new_tokens": 128
+    }
+  ],
+  "real": [
+    {
+      "equal": true,
+      "n_tokens": 15,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0625,
+      "mean_abs_logit_diff": 0.007478582207113504,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 1.15625,
+      "annotation_id": 0,
+      "input_len": 311
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.004536175634711981,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 1.671875,
+      "annotation_id": 1,
+      "input_len": 290
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.005189670715481043,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 1.15625,
+      "annotation_id": 2,
+      "input_len": 296
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0625,
+      "mean_abs_logit_diff": 0.006546415854245424,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 4.171875,
+      "annotation_id": 3,
+      "input_len": 311
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.005294713657349348,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 7.0,
+      "annotation_id": 4,
+      "input_len": 297
+    },
+    {
+      "equal": true,
+      "n_tokens": 15,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0625,
+      "mean_abs_logit_diff": 0.0064035505056381226,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 3.03125,
+      "annotation_id": 5,
+      "input_len": 304
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0546875,
+      "mean_abs_logit_diff": 0.005473191384226084,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.71875,
+      "annotation_id": 6,
+      "input_len": 296
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0625,
+      "mean_abs_logit_diff": 0.005072183907032013,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.859375,
+      "annotation_id": 7,
+      "input_len": 298
+    },
+    {
+      "equal": true,
+      "n_tokens": 21,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.004835786297917366,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.921875,
+      "annotation_id": 8,
+      "input_len": 291
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.005146753508597612,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.359375,
+      "annotation_id": 9,
+      "input_len": 292
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.078125,
+      "mean_abs_logit_diff": 0.005045589059591293,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.265625,
+      "annotation_id": 10,
+      "input_len": 299
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0546875,
+      "mean_abs_logit_diff": 0.00471357349306345,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 3.0,
+      "annotation_id": 11,
+      "input_len": 299
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0546875,
+      "mean_abs_logit_diff": 0.005196069832891226,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.796875,
+      "annotation_id": 12,
+      "input_len": 292
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.005620917305350304,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 1.65625,
+      "annotation_id": 13,
+      "input_len": 296
+    },
+    {
+      "equal": true,
+      "n_tokens": 15,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0625,
+      "mean_abs_logit_diff": 0.007029004395008087,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.0625,
+      "annotation_id": 14,
+      "input_len": 300
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0390625,
+      "mean_abs_logit_diff": 0.005654595326632261,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.140625,
+      "annotation_id": 15,
+      "input_len": 292
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0625,
+      "mean_abs_logit_diff": 0.005405701696872711,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 3.796875,
+      "annotation_id": 16,
+      "input_len": 295
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.005578331649303436,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.84375,
+      "annotation_id": 17,
+      "input_len": 291
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.005532615818083286,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.90625,
+      "annotation_id": 18,
+      "input_len": 299
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0625,
+      "mean_abs_logit_diff": 0.006072478834539652,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.5,
+      "annotation_id": 19,
+      "input_len": 297
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.005926382262259722,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.8125,
+      "annotation_id": 20,
+      "input_len": 298
+    },
+    {
+      "equal": true,
+      "n_tokens": 16,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.078125,
+      "mean_abs_logit_diff": 0.0062552508898079395,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.59375,
+      "annotation_id": 21,
+      "input_len": 291
+    },
+    {
+      "equal": true,
+      "n_tokens": 19,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0625,
+      "mean_abs_logit_diff": 0.005203733686357737,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.109375,
+      "annotation_id": 22,
+      "input_len": 355
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.0059303478337824345,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 3.453125,
+      "annotation_id": 23,
+      "input_len": 295
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0498046875,
+      "mean_abs_logit_diff": 0.005098374094814062,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.3125,
+      "annotation_id": 24,
+      "input_len": 323
+    },
+    {
+      "equal": true,
+      "n_tokens": 15,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.046875,
+      "mean_abs_logit_diff": 0.004957439377903938,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.5625,
+      "annotation_id": 25,
+      "input_len": 297
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.05078125,
+      "mean_abs_logit_diff": 0.005092895124107599,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 0.734375,
+      "annotation_id": 26,
+      "input_len": 296
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.078125,
+      "mean_abs_logit_diff": 0.0075749666430056095,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 3.375,
+      "annotation_id": 27,
+      "input_len": 314
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.05859375,
+      "mean_abs_logit_diff": 0.006292222999036312,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 1.46875,
+      "annotation_id": 28,
+      "input_len": 305
+    },
+    {
+      "equal": true,
+      "n_tokens": 14,
+      "first_mismatch": null,
+      "max_abs_logit_diff": 0.0703125,
+      "mean_abs_logit_diff": 0.008611501194536686,
+      "argmax_agreement": 1.0,
+      "min_top2_gap_over_steps": 2.78125,
+      "annotation_id": 29,
+      "input_len": 303
+    }
+  ]
+}

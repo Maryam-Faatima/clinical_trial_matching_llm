@@ -1,0 +1,145 @@
+{
+  "gpu": "Tesla T4",
+  "dtype": "fp16",
+  "repeats": 3,
+  "rows": [
+    {
+      "input_len": 128,
+      "new_tokens": 32,
+      "kv_theory_mib": 4.375,
+      "uncached": {
+        "prefill_ms": 42.94629566660054,
+        "decode_ms": 1351.7141293336106,
+        "total_tps": 22.9446533553106,
+        "total_tps_std": 0.3464389989412731,
+        "decode_tps": 22.933843278891278,
+        "peak_mib": 10.25439453125
+      },
+      "cached": {
+        "prefill_ms": 45.633309999857374,
+        "decode_ms": 1200.212863000009,
+        "total_tps": 25.68535401360777,
+        "total_tps_std": 0.046843270800107834,
+        "decode_tps": 25.828751678692655,
+        "peak_mib": 12.314453125
+      },
+      "tokens_equal": true,
+      "speedup": 1.1194483357780967
+    },
+    {
+      "input_len": 128,
+      "new_tokens": 128,
+      "kv_theory_mib": 7.0,
+      "uncached": {
+        "prefill_ms": 44.06690766662299,
+        "decode_ms": 6323.724664666618,
+        "total_tps": 20.101160433098023,
+        "total_tps_std": 0.11344751748169447,
+        "decode_tps": 20.083100820249793,
+        "peak_mib": 18.33740234375
+      },
+      "cached": {
+        "prefill_ms": 47.173166333323024,
+        "decode_ms": 4922.854329666431,
+        "total_tps": 25.754384679566435,
+        "total_tps_std": 0.10360077241000618,
+        "decode_tps": 25.798041440036968,
+        "peak_mib": 13.05029296875
+      },
+      "tokens_equal": true,
+      "speedup": 1.2812387008841524
+    },
+    {
+      "input_len": 512,
+      "new_tokens": 32,
+      "kv_theory_mib": 14.875,
+      "uncached": {
+        "prefill_ms": 116.47765233336334,
+        "decode_ms": 4516.499623999455,
+        "total_tps": 6.907005601661236,
+        "total_tps_std": 0.07178028046308009,
+        "decode_tps": 6.863722479965325,
+        "peak_mib": 54.22119140625
+      },
+      "cached": {
+        "prefill_ms": 113.33063533334098,
+        "decode_ms": 1205.7015956668995,
+        "total_tps": 24.260210818149574,
+        "total_tps_std": 0.24737102996589955,
+        "decode_tps": 25.711171081973426,
+        "peak_mib": 62.26416015625
+      },
+      "tokens_equal": true,
+      "speedup": 3.5124064199853318
+    },
+    {
+      "input_len": 512,
+      "new_tokens": 128,
+      "kv_theory_mib": 17.5,
+      "uncached": {
+        "prefill_ms": 113.07887866670778,
+        "decode_ms": 19214.043522333137,
+        "total_tps": 6.622817269133568,
+        "total_tps_std": 0.09938985047297179,
+        "decode_tps": 6.609748741975293,
+        "peak_mib": 68.986328125
+      },
+      "cached": {
+        "prefill_ms": 115.28352266668662,
+        "decode_ms": 4952.964280000212,
+        "total_tps": 25.25527657362111,
+        "total_tps_std": 0.12484563772298111,
+        "decode_tps": 25.64121056007183,
+        "peak_mib": 62.26416015625
+      },
+      "tokens_equal": true,
+      "speedup": 3.8133736063240558
+    },
+    {
+      "input_len": 1024,
+      "new_tokens": 32,
+      "kv_theory_mib": 28.875,
+      "uncached": {
+        "prefill_ms": 273.6714606667192,
+        "decode_ms": 9457.711938333356,
+        "total_tps": 3.2883300028326996,
+        "total_tps_std": 0.024106324718342564,
+        "decode_tps": 3.2777483816516875,
+        "peak_mib": 161.05078125
+      },
+      "cached": {
+        "prefill_ms": 274.91367200006306,
+        "decode_ms": 1207.3221296664087,
+        "total_tps": 21.589007608656143,
+        "total_tps_std": 0.2855739301596218,
+        "decode_tps": 25.676660137560397,
+        "peak_mib": 179.52783203125
+      },
+      "tokens_equal": true,
+      "speedup": 6.565340945117584
+    },
+    {
+      "input_len": 1024,
+      "new_tokens": 128,
+      "kv_theory_mib": 31.5,
+      "uncached": {
+        "prefill_ms": 271.2799740000567,
+        "decode_ms": 41095.560322667705,
+        "total_tps": 3.094265819724956,
+        "total_tps_std": 0.007367611276474399,
+        "decode_tps": 3.0903581555487074,
+        "peak_mib": 187.7626953125
+      },
+      "cached": {
+        "prefill_ms": 273.5585743333407,
+        "decode_ms": 4905.9435856672735,
+        "total_tps": 24.712799810857657,
+        "total_tps_std": 0.14153489089084997,
+        "decode_tps": 25.886967059921115,
+        "peak_mib": 179.52783203125
+      },
+      "tokens_equal": true,
+      "speedup": 7.9866440864005455
+    }
+  ]
+}
