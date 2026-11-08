@@ -7,7 +7,7 @@ TARGET, DRAFT = "Qwen/Qwen2.5-1.5B-Instruct", "Qwen/Qwen2.5-0.5B-Instruct"
 
 def info(name):
     cfg = AutoConfig.from_pretrained(name)
-    m = AutoModelForCausalLM.from_pretrained(name, torch_dtype=torch.float16)
+    m = AutoModelForCausalLM.from_pretrained(name, dtype=torch.float16)
     n = sum(p.numel() for p in m.parameters())
     head_dim = cfg.hidden_size // cfg.num_attention_heads
     kv_bytes_per_tok = 2 * cfg.num_hidden_layers * cfg.num_key_value_heads * head_dim * 2
