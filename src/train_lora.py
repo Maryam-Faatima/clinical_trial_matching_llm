@@ -18,7 +18,7 @@ from src.prompts import build_messages, format_target
 
 MODEL = "Qwen/Qwen2.5-1.5B-Instruct"
 OUT = Path("outputs/lora_r16")
-CFG = dict(seed=42, max_len=1024, epochs=3, lr=2e-4, micro_bs=2, grad_accum=8,
+CFG = dict(seed=42, max_len=1024, epochs=3, lr=2e-4, micro_bs=1, grad_accum=16,
            warmup_ratio=0.1, weight_decay=0.0, max_grad_norm=1.0,
            lora_r=16, lora_alpha=32, lora_dropout=0.05,
            target_modules=["q_proj", "k_proj", "v_proj", "o_proj",
@@ -76,6 +76,8 @@ def main():
 
     model = AutoModelForCausalLM.from_pretrained(MODEL, dtype=torch.float16).cuda()
     model.config.use_cache = False
+    model.gradient_checkpointing_enable(gradient_checkpointing_kwargs={"use_reentrant": False})
+    model.enable_input_require_grads()
     model = get_peft_model(model, LoraConfig(
         r=CFG["lora_r"], lora_alpha=CFG["lora_alpha"], lora_dropout=CFG["lora_dropout"],
         target_modules=CFG["target_modules"], task_type="CAUSAL_LM"))
