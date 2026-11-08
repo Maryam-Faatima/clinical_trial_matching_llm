@@ -20,6 +20,20 @@ def load_model(base, adapter=None, dtype=torch.float16):
         model = PeftModel.from_pretrained(model, adapter).merge_and_unload()
     return model
 
+def crop_cache(cache, new_len):
+    """Shrink a KV cache to its first new_len tokens (version-proof)."""
+    cur = cache.get_seq_length()
+    if cur <= new_len:
+        return
+    try:
+        cache.crop(-(cur - new_len))        # newer versions: negative = tokens to remove
+    except Exception:
+        pass
+    if cache.get_seq_length() != new_len:   # fallback: slice the tensors ourselves
+        for layer in cache.layers:
+            layer.keys = layer.keys[..., :new_len, :]
+            layer.values = layer.values[..., :new_len, :]
+
 def _sync():
     torch.cuda.synchronize()
 
@@ -93,9 +107,9 @@ def speculative_generate(target, draft, ids, max_new, k, eos_id=None):
                 break
 
         # ---- 4. ROLL BACK caches to the accepted prefix
-        t_cache.crop(len(committed) - 1)
+        crop_cache(t_cache, len(committed) - 1)
         valid_d = L_old + min(a, k - 1)      # draft cache holds committed + d1..d_{k-1}
-        d_cache.crop(valid_d); d_len = valid_d
+        crop_cache(d_cache, valid_d); d_len = valid_d
         assert t_cache.get_seq_length() == len(committed) - 1
         assert d_cache.get_seq_length() == valid_d
 
