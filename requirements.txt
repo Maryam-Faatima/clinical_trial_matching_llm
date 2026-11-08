@@ -5,3 +5,4 @@ accelerate
 numpy
 pandas
 scikit-learn
+matplotlib
