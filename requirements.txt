@@ -1,0 +1,7 @@
+datasets
+transformers>=4.44
+peft
+accelerate
+numpy
+pandas
+scikit-learn
