@@ -1,0 +1,27 @@
+# LoRA fine-tuning of the DRAFT model Qwen2.5-0.5B-Instruct (console output transcribed from the Kaggle run, Tesla T4, 2026-11-08)
+# Same recipe as the target: LoRA r=16 alpha=32 dropout=0.05 on all 7 projection layers, lr 2e-4 cosine, 3 epochs,
+# micro-batch 1 x grad-accum 16 (effective 16), fp16 autocast, gradient checkpointing, seed 42.
+# Command: BASE_MODEL=Qwen/Qwen2.5-0.5B-Instruct OUT_DIR=outputs/lora_draft python -m src.train_lora
+# The original train_log.json, training_curves.png and the adapter were lost when the Kaggle session reset.
+# Re-running the command regenerates them (training is deterministic; see the note at the end).
+
+trainable params: 8,798,208 || all params: 502,830,976 || trainable%: 1.7497
+epoch 1 step 10/114 loss 0.1382
+epoch 1 step 20/114 loss 0.1680
+epoch 1 step 30/114 loss 0.1828
+== epoch 1 val_loss 0.1495  (233s)
+epoch 2 step 40/114 loss 0.1304
+epoch 2 step 50/114 loss 0.0959
+epoch 2 step 60/114 loss 0.1363
+epoch 2 step 70/114 loss 0.1126
+== epoch 2 val_loss 0.1333  (468s)
+epoch 3 step 80/114 loss 0.0820
+epoch 3 step 90/114 loss 0.0914
+epoch 3 step 100/114 loss 0.0290
+epoch 3 step 110/114 loss 0.0843
+== epoch 3 val_loss 0.1396  (702s)
+peak GPU mem GiB: 5.859501838684082
+
+# Note (determinism check): the 1.5B TARGET was accidentally retrained once (the BASE_MODEL variable was not applied
+# because the edit had not been pushed). That second run reproduced the first run's validation losses exactly:
+# epoch 1 = 0.1327, epoch 2 = 0.1255, epoch 3 = 0.1300, peak 7.9456 GiB, trainable params 18,464,768.

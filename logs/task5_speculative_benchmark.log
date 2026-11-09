@@ -1,0 +1,61 @@
+# Task 5 speculative decoding benchmark: console output transcribed from the Kaggle run (Tesla T4, 2026-11-08)
+# The original JSON/PNG files written by src/bench_spec.py were lost when the Kaggle session reset.
+# The lines below are the raw printed results of that run (progress bars and library warnings removed).
+# Target: Qwen2.5-1.5B-Instruct + LoRA epoch 3 (merged).  Draft: Qwen2.5-0.5B-Instruct (self / base / LoRA fine-tuned).
+# A_real = first N validation prompts (stop at EOS, max 64 new tokens).
+# B_long = synthetic 256- and 768-token prompts, exactly 96 new tokens (no EOS stop).
+# "equal x/y" = number of prompts whose output tokens are identical to ordinary cached greedy decoding.
+# Peak = torch max_memory_allocated (includes model weights).
+
+## section: smoke
+## command: python -m src.bench_spec --n 5 --ks 3 --repeats 1 --name smoke
+[A_real] baseline cached greedy k=0 | equal 5/5 |   24.2 tok/s |     587 ms/prompt | speedup 1.00x | peak 2984 MiB
+[B_long] baseline cached greedy k=0 | equal 2/2 |   25.3 tok/s |    3799 ms/prompt | speedup 1.00x | peak 3066 MiB
+[A_real] self (oracle)          k=3 | equal 5/5 |   20.3 tok/s |     698 ms/prompt | speedup 0.84x | peak 2993 MiB | accept 1.00 | tok/round 3.30
+[B_long] self (oracle)          k=3 | equal 2/2 |   25.2 tok/s |    3813 ms/prompt | speedup 1.00x | peak 3088 MiB | accept 1.00 | tok/round 3.96
+[A_real] base 0.5B              k=3 | equal 5/5 |   19.7 tok/s |     722 ms/prompt | speedup 0.81x | peak 3927 MiB | accept 0.72 | tok/round 2.64
+[B_long] base 0.5B              k=3 | equal 2/2 |   19.8 tok/s |    4856 ms/prompt | speedup 0.78x | peak 4016 MiB | accept 0.57 | tok/round 2.68
+[A_real] fine-tuned 0.5B        k=3 | equal 5/5 |   23.7 tok/s |     600 ms/prompt | speedup 0.98x | peak 3927 MiB | accept 1.00 | tok/round 3.30
+[B_long] fine-tuned 0.5B        k=3 | equal 2/2 |   17.7 tok/s |    5425 ms/prompt | speedup 0.70x | peak 4016 MiB | accept 0.49 | tok/round 2.44
+
+## section: full_fp16
+## command: python -m src.bench_spec --hf-ref      (defaults: fp16, n=40, ks=2,3,4,6, repeats=2)
+[A_real] baseline cached greedy k=0 | equal 40/40 |   24.9 tok/s |     610 ms/prompt | speedup 1.00x | peak 2990 MiB
+[B_long] baseline cached greedy k=0 | equal 2/2 |   25.1 tok/s |    3832 ms/prompt | speedup 1.00x | peak 3067 MiB
+[A_real] self (oracle)          k=2 | equal 40/40 |   21.8 tok/s |     696 ms/prompt | speedup 0.88x | peak 3000 MiB | accept 1.00 | tok/round 2.70
+[A_real] self (oracle)          k=3 | equal 40/40 |   20.6 tok/s |     737 ms/prompt | speedup 0.83x | peak 3000 MiB | accept 1.00 | tok/round 3.40
+[A_real] self (oracle)          k=4 | equal 40/40 |   21.5 tok/s |     706 ms/prompt | speedup 0.86x | peak 3000 MiB | accept 1.00 | tok/round 4.46
+[A_real] self (oracle)          k=6 | equal 40/40 |   21.6 tok/s |     702 ms/prompt | speedup 0.87x | peak 3000 MiB | accept 1.00 | tok/round 6.37
+[B_long] self (oracle)          k=2 | equal 2/2 |   25.1 tok/s |    3831 ms/prompt | speedup 1.00x | peak 3088 MiB | accept 1.00 | tok/round 2.97
+[B_long] self (oracle)          k=3 | equal 2/2 |   25.1 tok/s |    3829 ms/prompt | speedup 1.00x | peak 3088 MiB | accept 1.00 | tok/round 3.96
+[B_long] self (oracle)          k=4 | equal 2/2 |   24.8 tok/s |    3869 ms/prompt | speedup 0.99x | peak 3088 MiB | accept 1.00 | tok/round 5.00
+[B_long] self (oracle)          k=6 | equal 2/2 |   24.2 tok/s |    3973 ms/prompt | speedup 0.96x | peak 3088 MiB | accept 1.00 | tok/round 6.79
+[A_real] base 0.5B              k=2 | equal 40/40 |   22.7 tok/s |     670 ms/prompt | speedup 0.91x | peak 3934 MiB | accept 0.84 | tok/round 2.38
+[A_real] base 0.5B              k=3 | equal 40/40 |   21.2 tok/s |     717 ms/prompt | speedup 0.85x | peak 3934 MiB | accept 0.84 | tok/round 2.94
+[A_real] base 0.5B              k=4 | equal 40/40 |   20.6 tok/s |     735 ms/prompt | speedup 0.83x | peak 3934 MiB | accept 0.80 | tok/round 3.54
+[A_real] base 0.5B              k=6 | equal 40/40 |   19.0 tok/s |     800 ms/prompt | speedup 0.76x | peak 3934 MiB | accept 0.73 | tok/round 4.50
+[B_long] base 0.5B              k=2 | equal 2/2 |   21.9 tok/s |    4384 ms/prompt | speedup 0.87x | peak 4016 MiB | accept 0.66 | tok/round 2.29
+[B_long] base 0.5B              k=3 | equal 2/2 |   19.5 tok/s |    4916 ms/prompt | speedup 0.78x | peak 4016 MiB | accept 0.57 | tok/round 2.68
+[B_long] base 0.5B              k=4 | equal 2/2 |   17.2 tok/s |    5576 ms/prompt | speedup 0.69x | peak 4016 MiB | accept 0.49 | tok/round 2.92
+[B_long] base 0.5B              k=6 | equal 2/2 |   13.8 tok/s |    6978 ms/prompt | speedup 0.55x | peak 4016 MiB | accept 0.39 | tok/round 3.28
+[A_real] HF assisted (base 0.5B) k=4 | equal 40/40 |   22.3 tok/s |     682 ms/prompt | speedup 0.90x | peak 3940 MiB
+[A_real] fine-tuned 0.5B        k=2 | equal 40/40 |   24.8 tok/s |     612 ms/prompt | speedup 1.00x | peak 3934 MiB | accept 0.96 | tok/round 2.61
+[A_real] fine-tuned 0.5B        k=3 | equal 40/40 |   23.5 tok/s |     644 ms/prompt | speedup 0.95x | peak 3934 MiB | accept 0.95 | tok/round 3.28
+[A_real] fine-tuned 0.5B        k=4 | equal 40/40 |   23.9 tok/s |     635 ms/prompt | speedup 0.96x | peak 3934 MiB | accept 0.93 | tok/round 4.14
+[A_real] fine-tuned 0.5B        k=6 | equal 40/40 |   23.8 tok/s |     639 ms/prompt | speedup 0.96x | peak 3934 MiB | accept 0.93 | tok/round 5.79
+[B_long] fine-tuned 0.5B        k=2 | equal 2/2 |   20.3 tok/s |    4731 ms/prompt | speedup 0.81x | peak 4016 MiB | accept 0.58 | tok/round 2.13
+[B_long] fine-tuned 0.5B        k=3 | equal 2/2 |   17.8 tok/s |    5398 ms/prompt | speedup 0.71x | peak 4016 MiB | accept 0.49 | tok/round 2.44
+[B_long] fine-tuned 0.5B        k=4 | equal 2/2 |   15.4 tok/s |    6243 ms/prompt | speedup 0.61x | peak 4016 MiB | accept 0.41 | tok/round 2.60
+[B_long] fine-tuned 0.5B        k=6 | equal 2/2 |   12.3 tok/s |    7821 ms/prompt | speedup 0.49x | peak 4016 MiB | accept 0.33 | tok/round 2.88
+[A_real] HF assisted (fine-tuned 0.5B) k=4 | equal 40/40 |   24.3 tok/s |     623 ms/prompt | speedup 0.98x | peak 3940 MiB
+
+## section: fp32
+## command: python -m src.bench_spec --dtype fp32 --n 20 --ks 4 --repeats 1 --name spec_fp32
+[A_real] baseline cached greedy k=0 | equal 20/20 |   18.2 tok/s |     795 ms/prompt | speedup 1.00x | peak 5954 MiB
+[B_long] baseline cached greedy k=0 | equal 2/2 |   24.4 tok/s |    3934 ms/prompt | speedup 1.00x | peak 6037 MiB
+[A_real] self (oracle)          k=4 | equal 20/20 |   11.5 tok/s |    1260 ms/prompt | speedup 0.63x | peak 5972 MiB | accept 1.00 | tok/round 4.43
+[B_long] self (oracle)          k=4 | equal 2/2 |   19.4 tok/s |    4957 ms/prompt | speedup 0.79x | peak 6080 MiB | accept 1.00 | tok/round 5.00
+[A_real] base 0.5B              k=4 | equal 20/20 |   14.6 tok/s |     990 ms/prompt | speedup 0.80x | peak 7839 MiB | accept 0.84 | tok/round 3.70
+[B_long] base 0.5B              k=4 | equal 2/2 |   15.5 tok/s |    6198 ms/prompt | speedup 0.63x | peak 7935 MiB | accept 0.48 | tok/round 2.88
+[A_real] fine-tuned 0.5B        k=4 | equal 20/20 |   15.2 tok/s |     954 ms/prompt | speedup 0.83x | peak 7839 MiB | accept 0.93 | tok/round 4.09
+[B_long] fine-tuned 0.5B        k=4 | equal 2/2 |   14.0 tok/s |    6875 ms/prompt | speedup 0.57x | peak 7935 MiB | accept 0.41 | tok/round 2.60
