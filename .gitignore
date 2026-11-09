@@ -1,4 +1,5 @@
 outputs/lora_*/
 __pycache__/
 *.pt
-
+reports/
+*.zip

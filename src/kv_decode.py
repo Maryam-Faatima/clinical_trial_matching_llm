@@ -31,7 +31,8 @@ def synthetic_ids(tok, n):
     return torch.tensor([ids[:n]]).cuda()
 
 def _sync():
-    torch.cuda.synchronize()
+    if torch.cuda.is_available():
+        torch.cuda.synchronize()
 
 # ---------------- explicit cache-aware forward passes ----------------
 def _prefill(model, ids):

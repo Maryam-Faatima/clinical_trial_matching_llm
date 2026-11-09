@@ -35,7 +35,8 @@ def crop_cache(cache, new_len):
             layer.values = layer.values[..., :new_len, :]
 
 def _sync():
-    torch.cuda.synchronize()
+    if torch.cuda.is_available():
+        torch.cuda.synchronize()
 
 def _fwd(model, ids, cache, n_cached, keep_all):
     """Feed m new tokens after n_cached cached ones.
