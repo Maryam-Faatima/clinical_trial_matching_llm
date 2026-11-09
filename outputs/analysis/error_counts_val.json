@@ -1,0 +1,7 @@
+{
+  "right_label_wrong_evidence": 45,
+  "missing_info_treated_as_proof": 26,
+  "false_insufficient_information": 14,
+  "not_applicable_confusion": 6,
+  "wrong_decision_polarity": 2
+}
