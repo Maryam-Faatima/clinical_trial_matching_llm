@@ -17,6 +17,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 from src import screening as S
+from src import ui_theme as T
 
 EXAMPLES = {
     "Example 1: type 2 diabetes (synthetic)": (
@@ -115,87 +116,153 @@ def build_ui(engine):
 
     kv_rows, spec_rows, gpu = S.offline_tables()
 
-    with gr.Blocks(title="Clinical trial eligibility screening (educational prototype)") as demo:
-        gr.Markdown("# Clinical trial eligibility screening\n"
-                    f"**\u26a0\ufe0f {S.DISCLAIMER}**")
-        if engine.adapter is None:
-            gr.Markdown("**WARNING: running the BASE model without the fine-tuned adapter (testing mode). "
-                        "Accuracy is very poor in this mode.**")
-        with gr.Tab("Screening"):
-            with gr.Row():
-                ex = gr.Dropdown(list(EXAMPLES), label="Load an example (or type your own below)")
-                load_btn = gr.Button("Load example")
-                clear_btn = gr.Button("Clear")
-            with gr.Row():
-                note = gr.Textbox(lines=12, label="Patient note (numbered lines or free text)",
-                                  placeholder="Paste the patient description here...")
-                criteria = gr.Textbox(lines=12, label="Trial eligibility criteria (one per line)",
-                                      placeholder="Inclusion criteria:\n- ...\nExclusion criteria:\n- ...")
-            with gr.Row():
-                mode = gr.Radio(S.MODES, value=S.MODE_KV, label="Decoding mode")
-                k = gr.Slider(2, 6, value=3, step=1, label="Speculative draft length k (only for speculative mode)")
-            run_btn = gr.Button("Run screening", variant="primary")
-            status = gr.Markdown()
-            outcome_md = gr.Markdown()
-            table = gr.Dataframe(headers=S.TABLE_HEADERS, label="Criterion-level results", interactive=False,
-                                 wrap=True)
-            details = gr.Markdown()
-            with gr.Row():
-                f_html = gr.File(label="Download report (HTML)", interactive=False)
-                f_md = gr.File(label="Download report (Markdown)", interactive=False)
-            run_btn.click(run_screening, [note, criteria, mode, k],
-                          [status, outcome_md, table, details, f_html, f_md], api_name="run_screening")
-            load_btn.click(load_example, [ex], [note, criteria], api_name="load_example")
-            clear_btn.click(lambda: ("", "", "", "", None, "", None, None),
-                            None, [note, criteria, status, outcome_md, table, details, f_html, f_md],
-                            api_name="clear")
+    with gr.Blocks(title="Clinical trial eligibility screening (educational prototype)", fill_width=True) as demo:
+        with gr.Column(elem_classes=["bento-shell"]):
+            # Top Safety Disclaimer Pill (always visible near the top)
+            gr.HTML(
+                f'<div class="disclaimer-bar">'
+                f'<span>&#9888;&#65039; <strong>SAFETY NOTICE:</strong> {S.DISCLAIMER}</span>'
+                f'</div>'
+            )
 
-        with gr.Tab("Inference benchmark"):
-            gr.Markdown("Runs the **same prompts** (the note and criteria from the Screening tab) through all three "
-                        "decoding paths and measures them live: no cache (re-reads the whole sequence at every "
-                        "step), KV cache (explicit cache reuse), and speculative decoding (0.5B draft proposes, the "
-                        "1.5B target verifies). Greedy decoding, so all modes should give identical tokens.")
-            with gr.Row():
-                bk = gr.Slider(2, 6, value=3, step=1, label="Speculative k")
-                reps = gr.Slider(1, 3, value=1, step=1, label="Repeats per prompt")
-            bench_btn = gr.Button("Run benchmark on the Screening-tab inputs", variant="primary")
-            bstatus = gr.Markdown()
-            btable = gr.Dataframe(
-                headers=["Mode", "Total time (s)", "Tokens", "Tokens/s", "Peak extra memory (MiB)",
-                         "Tokens identical to reference", "Draft acceptance", "Speedup vs no cache",
-                         "Speedup vs KV cache"], interactive=False, wrap=True)
-            bplot = gr.Plot()
-            bench_btn.click(run_benchmark, [note, criteria, bk, reps], [bstatus, btable, bplot],
-                            api_name="run_benchmark")
-            with gr.Accordion("Saved experiment results from the repository (measured earlier on a Kaggle T4)", open=False):
-                if kv_rows:
-                    gr.Markdown(f"**KV cache vs no cache** (GPU: {gpu}, fp16, batch 1)")
-                    gr.Dataframe(value=kv_rows, headers=["input + output tokens", "no cache tok/s",
-                                 "KV cache tok/s", "speedup", "tokens identical"], interactive=False)
-                if spec_rows:
-                    gr.Markdown("**Speculative decoding** (real validation prompts, n=40)")
-                    gr.Dataframe(value=spec_rows, headers=["draft", "k", "acceptance", "tok/s", "speedup vs cached greedy",
-                                 "outputs identical"], interactive=False)
-                if not (kv_rows or spec_rows):
-                    gr.Markdown("No saved results found in outputs/.")
+            if engine.adapter is None:
+                gr.HTML(
+                    '<div class="test-mode-alert">'
+                    '&#9888;&#65039; <strong>TESTING MODE:</strong> Running BASE model without fine-tuned adapter. Accuracy is very poor in this mode.'
+                    '</div>'
+                )
 
-        with gr.Tab("About"):
-            gr.Markdown(
-                f"**{S.DISCLAIMER}**\n\n"
-                f"**Model:** {engine.base} fine-tuned with LoRA (adapter: {engine.adapter or 'none'}, source: "
-                f"{engine.adapter_source}); running on **{engine.device}** ({engine.dtype}). Draft model for speculative "
-                f"decoding: {engine.draft_base}.\n\n"
-                "**Labels.** Inclusion criteria: included / not included / not enough information / not applicable. "
-                "Exclusion criteria: excluded / not excluded / not enough information / not applicable.\n\n"
-                f"**Aggregation.** {S.AGGREGATION_RULE}\n\n"
-                "**Explanations** are built only from the predicted label and the sentences the model cited; the model "
-                "does not write free-form reasoning. Cited sentence IDs are checked against the note.\n\n"
-                "**Known limitations (measured on the held-out test patients).** Accuracy 0.743 and macro-F1 0.536 at the "
-                "criterion level; the model often answers 'not excluded' when the note simply lacks the information "
-                "(exclusion criteria with 'not enough information' were not recognised in testing); rare labels such as "
-                "'not included' are frequently missed. Results measured in fp16 on a GPU can differ slightly on CPU.\n\n"
-                "**Inputs.** Sentence IDs are 0-based. Notes are never truncated: if note + criterion exceed "
-                f"{S.MAX_PROMPT_TOKENS} tokens you are asked to shorten them.")
+            # Top Navigation Bar: Wordmark, Center Tabs, Right Badge Pill
+            with gr.Row(elem_classes=["bento-top-bar"]):
+                gr.HTML('<div class="bento-wordmark">Clinical Trial Screening</div>')
+                gr.HTML('<div class="nav-badge-pill">Educational prototype &bull; not for clinical use</div>')
+
+            with gr.Tabs(elem_classes=["bento-tabs"]):
+                with gr.Tab("Screening"):
+                    # Bento Hero Grid Row: Left Column (Blue + Black Cards), Right Column (Big Grey Card)
+                    with gr.Row(elem_classes=["bento-hero-row"]):
+                        # Left Column: stacked cards (Blue card + Black card)
+                        with gr.Column(elem_classes=["bento-col-left"], scale=1):
+                            # 1. Cornflower-blue card with real engine info, ECG line, badge
+                            with gr.Column(elem_classes=["card-blue"]):
+                                gr.HTML(T.get_blue_card_html(engine))
+
+                            # 2. Near-black card with example loader and clear buttons
+                            with gr.Column(elem_classes=["card-black"]):
+                                gr.HTML(
+                                    '<div>'
+                                    '<div class="black-card-title">Patient Cases</div>'
+                                    '<div class="black-card-desc">Select a preset synthetic clinical scenario to load inputs automatically.</div>'
+                                    '</div>'
+                                )
+                                ex = gr.Dropdown(
+                                    list(EXAMPLES),
+                                    label="Select preset scenario",
+                                    container=False,
+                                )
+                                with gr.Row():
+                                    load_btn = gr.Button("Load example", elem_classes=["btn-white-outline"])
+                                    clear_btn = gr.Button("Clear", elem_classes=["btn-black-clear"])
+
+                        # Right Column: Big Light-Grey Card
+                        with gr.Column(elem_classes=["bento-col-right", "card-grey"], scale=2):
+                            # Headline, Subtitle, and Medical Line-Art Illustration
+                            gr.HTML(T.get_grey_card_header_html())
+
+                            with gr.Row():
+                                note = gr.Textbox(
+                                    lines=10,
+                                    label="Patient note (numbered lines or free text)",
+                                    placeholder="Paste the patient description here...",
+                                )
+                                criteria = gr.Textbox(
+                                    lines=10,
+                                    label="Trial eligibility criteria (one per line)",
+                                    placeholder="Inclusion criteria:\n- ...\nExclusion criteria:\n- ...",
+                                )
+                            with gr.Row():
+                                mode = gr.Radio(S.MODES, value=S.MODE_KV, label="Decoding mode")
+                                k = gr.Slider(2, 6, value=3, step=1, label="Speculative draft length k (speculative mode only)")
+                            with gr.Row():
+                                run_btn = gr.Button("Run screening", variant="primary", elem_classes=["btn-pill-primary"])
+
+                    # Screening Results Section (white rounded cards)
+                    with gr.Column(elem_classes=["bento-card-white"]):
+                        status = gr.Markdown()
+                        outcome_md = gr.Markdown()
+                        table = gr.Dataframe(headers=S.TABLE_HEADERS, label="Criterion-level results", interactive=False, wrap=True)
+                        details = gr.Markdown()
+                        with gr.Row():
+                            f_html = gr.File(label="Download report (HTML)", interactive=False)
+                            f_md = gr.File(label="Download report (Markdown)", interactive=False)
+
+                    run_btn.click(run_screening, [note, criteria, mode, k],
+                                  [status, outcome_md, table, details, f_html, f_md], api_name="run_screening")
+                    load_btn.click(load_example, [ex], [note, criteria], api_name="load_example")
+                    clear_btn.click(lambda: ("", "", "", "", None, "", None, None),
+                                    None, [note, criteria, status, outcome_md, table, details, f_html, f_md],
+                                    api_name="clear")
+
+                with gr.Tab("Inference benchmark"):
+                    with gr.Column(elem_classes=["bento-card-white"]):
+                        gr.HTML('<h2 style="font-size: 1.5rem; font-weight: 700; margin: 0 0 8px 0; color: #111827;">Inference Benchmark</h2>')
+                        gr.Markdown("Runs the **same prompts** (the note and criteria from the Screening tab) through all three "
+                                    "decoding paths and measures them live: no cache (re-reads the whole sequence at every "
+                                    "step), KV cache (explicit cache reuse), and speculative decoding (0.5B draft proposes, the "
+                                    "1.5B target verifies). Greedy decoding, so all modes should give identical tokens.")
+                        with gr.Row():
+                            bk = gr.Slider(2, 6, value=3, step=1, label="Speculative k")
+                            reps = gr.Slider(1, 3, value=1, step=1, label="Repeats per prompt")
+                        bench_btn = gr.Button("Run benchmark on the Screening-tab inputs", variant="primary", elem_classes=["btn-pill-primary"])
+                        bstatus = gr.Markdown()
+                        btable = gr.Dataframe(
+                            headers=["Mode", "Total time (s)", "Tokens", "Tokens/s", "Peak extra memory (MiB)",
+                                     "Tokens identical to reference", "Draft acceptance", "Speedup vs no cache",
+                                     "Speedup vs KV cache"], interactive=False, wrap=True)
+                        bplot = gr.Plot()
+                        bench_btn.click(run_benchmark, [note, criteria, bk, reps], [bstatus, btable, bplot],
+                                        api_name="run_benchmark")
+                        with gr.Accordion("Saved experiment results from the repository (measured earlier on a Kaggle T4)", open=False):
+                            if kv_rows:
+                                gr.Markdown(f"**KV cache vs no cache** (GPU: {gpu}, fp16, batch 1)")
+                                gr.Dataframe(value=kv_rows, headers=["input + output tokens", "no cache tok/s",
+                                             "KV cache tok/s", "speedup", "tokens identical"], interactive=False)
+                            if spec_rows:
+                                gr.Markdown("**Speculative decoding** (real validation prompts, n=40)")
+                                gr.Dataframe(value=spec_rows, headers=["draft", "k", "acceptance", "tok/s", "speedup vs cached greedy",
+                                             "outputs identical"], interactive=False)
+                            if not (kv_rows or spec_rows):
+                                gr.Markdown("No saved results found in outputs/.")
+
+                with gr.Tab("About"):
+                    with gr.Column(elem_classes=["bento-card-white"]):
+                        gr.HTML('<h2 style="font-size: 1.5rem; font-weight: 700; margin: 0 0 12px 0; color: #111827;">About Clinical Trial Screening</h2>')
+                        gr.Markdown(
+                            f"**{S.DISCLAIMER}**\n\n"
+                            f"**Model:** {engine.base} fine-tuned with LoRA (adapter: {engine.adapter or 'none'}, source: "
+                            f"{engine.adapter_source}); running on **{engine.device}** ({engine.dtype}). Draft model for speculative "
+                            f"decoding: {engine.draft_base}.\n\n"
+                            "**Labels.** Inclusion criteria: included / not included / not enough information / not applicable. "
+                            "Exclusion criteria: excluded / not excluded / not enough information / not applicable.\n\n"
+                            f"**Aggregation.** {S.AGGREGATION_RULE}\n\n"
+                            "**Explanations** are built only from the predicted label and the sentences the model cited; the model "
+                            "does not write free-form reasoning. Cited sentence IDs are checked against the note.\n\n"
+                            "**Known limitations (measured on the held-out test patients).** Accuracy 0.743 and macro-F1 0.536 at the "
+                            "criterion level; the model often answers 'not excluded' when the note simply lacks the information "
+                            "(exclusion criteria with 'not enough information' were not recognised in testing); rare labels such as "
+                            "'not included' are frequently missed. Results measured in fp16 on a GPU can differ slightly on CPU.\n\n"
+                            "**Inputs.** Sentence IDs are 0-based. Notes are never truncated: if note + criterion exceed "
+                            f"{S.MAX_PROMPT_TOKENS} tokens you are asked to shorten them.")
+
+    # Wrap demo.launch so theme, css, and head are automatically supplied without breaking callers
+    orig_launch = demo.launch
+    def styled_launch(**kwargs):
+        kwargs.setdefault("theme", T.get_theme())
+        kwargs.setdefault("css", T.get_custom_css())
+        kwargs.setdefault("head", T.get_head_html())
+        return orig_launch(**kwargs)
+    demo.launch = styled_launch
+
     return demo
 
 
