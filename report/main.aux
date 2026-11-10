@@ -1,0 +1,144 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\citation{trialgpt}
+\citation{nievas}
+\citation{trialgpt}
+\citation{dataset}
+\citation{nievas}
+\@writefile{toc}{\contentsline {section}{\numberline {I}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {II}Related Work}{1}{section.2}\protected@file@percent }
+\newlabel{sec:related}{{II}{1}{Related Work}{section.2}{}}
+\citation{lora}
+\citation{qlora}
+\citation{onlinesoftmax}
+\citation{flash1}
+\citation{flash2}
+\citation{vaswani}
+\citation{specdec,specsamp}
+\citation{trialgpt}
+\citation{nievas}
+\citation{lora}
+\citation{qlora}
+\citation{onlinesoftmax}
+\citation{flash1}
+\citation{flash2}
+\citation{specdec}
+\citation{specsamp}
+\citation{dataset}
+\citation{trialgpt}
+\citation{qwen25}
+\citation{gqa}
+\citation{rope}
+\@writefile{lot}{\contentsline {table}{\numberline {I}{\ignorespaces Main Sources and Their Role in This Work}}{2}{table.1}\protected@file@percent }
+\newlabel{tab:sources}{{I}{2}{Main Sources and Their Role in This Work}{table.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {III}Materials and Methods}{2}{section.3}\protected@file@percent }
+\newlabel{sec:methods}{{III}{2}{Materials and Methods}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-A}}Dataset and Patient-Grouped Split}{2}{subsection.3.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {II}{\ignorespaces Usable Rows per Label and Split}}{2}{table.2}\protected@file@percent }
+\newlabel{tab:labels}{{II}{2}{Usable Rows per Label and Split}{table.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-B}}Model Selection and Feasibility}{2}{subsection.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {III}{\ignorespaces Candidate Open-Weight Decoder Models}}{3}{table.3}\protected@file@percent }
+\newlabel{tab:models}{{III}{3}{Candidate Open-Weight Decoder Models}{table.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-C}}Input, Output, and Tokenization}{3}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-D}}Fine-Tuning}{3}{subsection.3.4}\protected@file@percent }
+\newlabel{eq:lora}{{1}{3}{Fine-Tuning}{equation.1}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {IV}{\ignorespaces Fine-Tuning Configuration}}{3}{table.4}\protected@file@percent }
+\newlabel{tab:train}{{IV}{3}{Fine-Tuning Configuration}{table.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-E}}Evaluation Protocol}{3}{subsection.3.5}\protected@file@percent }
+\newlabel{eq:prf}{{2}{3}{Evaluation Protocol}{equation.2}{}}
+\citation{rope}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {1}{\ignorespaces Greedy decoding with an explicit KV cache}}{4}{algorithm.1}\protected@file@percent }
+\newlabel{alg:kv}{{1}{4}{KV-Cached Autoregressive Decoding}{algorithm.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-F}}KV-Cached Autoregressive Decoding}{4}{subsection.3.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-G}}Tiled Attention with Online Softmax}{4}{subsection.3.7}\protected@file@percent }
+\newlabel{eq:attn}{{3}{4}{Tiled Attention with Online Softmax}{equation.3}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {2}{\ignorespaces Tiled attention with online softmax}}{4}{algorithm.2}\protected@file@percent }
+\newlabel{alg:tile}{{2}{4}{Tiled Attention with Online Softmax}{algorithm.2}{}}
+\newlabel{eq:m}{{4}{4}{Tiled Attention with Online Softmax}{equation.4}{}}
+\newlabel{eq:p}{{5}{4}{Tiled Attention with Online Softmax}{equation.5}{}}
+\newlabel{eq:o}{{6}{4}{Tiled Attention with Online Softmax}{equation.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-H}}Greedy Speculative Decoding}{4}{subsection.3.8}\protected@file@percent }
+\citation{gradio}
+\citation{transformers}
+\citation{transformers}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {3}{\ignorespaces One round of greedy speculative decoding}}{5}{algorithm.3}\protected@file@percent }
+\newlabel{alg:spec}{{3}{5}{Greedy Speculative Decoding}{algorithm.3}{}}
+\newlabel{eq:cost}{{7}{5}{Greedy Speculative Decoding}{equation.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {III-I}}Application}{5}{subsection.3.9}\protected@file@percent }
+\newlabel{sec:app}{{\mbox  {III-I}}{5}{Application}{subsection.3.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {IV}Experimental Setup and Metrics}{5}{section.4}\protected@file@percent }
+\newlabel{sec:setup}{{IV}{5}{Experimental Setup and Metrics}{section.4}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Architecture of the screening system. The same prompt builder is used for training, evaluation, and the browser application; invalid model outputs are marked unresolved and are never repaired.}}{6}{figure.1}\protected@file@percent }
+\newlabel{fig:pipeline}{{1}{6}{Architecture of the screening system. The same prompt builder is used for training, evaluation, and the browser application; invalid model outputs are marked unresolved and are never repaired}{figure.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Training loss per optimizer step and validation loss per epoch for the LoRA fine-tuning of Qwen2.5-1.5B-Instruct.}}{6}{figure.2}\protected@file@percent }
+\newlabel{fig:curves}{{2}{6}{Training loss per optimizer step and validation loss per epoch for the LoRA fine-tuning of Qwen2.5-1.5B-Instruct}{figure.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {V}{\ignorespaces Validation Results Before and After Fine-Tuning ($n=206$)}}{6}{table.5}\protected@file@percent }
+\newlabel{tab:val}{{V}{6}{Validation Results Before and After Fine-Tuning ($n=206$)}{table.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {V}Results and Discussion}{6}{section.5}\protected@file@percent }
+\newlabel{sec:results}{{V}{6}{Results and Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-A}}Fine-Tuning and Epoch Selection}{6}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Held-Out Test Results}{6}{subsection.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Test Results ($n=206$; Inclusion $n=75$, Exclusion $n=131$)}}{6}{table.6}\protected@file@percent }
+\newlabel{tab:test}{{VI}{6}{Test Results ($n=206$; Inclusion $n=75$, Exclusion $n=131$)}{table.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Per-Class Results of the Fine-Tuned Model on the Test Split}}{6}{table.7}\protected@file@percent }
+\newlabel{tab:perclass}{{VII}{6}{Per-Class Results of the Fine-Tuned Model on the Test Split}{table.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Accuracy, macro-F1, and evidence micro-F1 of the base and fine-tuned models on the test split, overall and for inclusion and exclusion criteria.}}{7}{figure.3}\protected@file@percent }
+\newlabel{fig:beforeafter}{{3}{7}{Accuracy, macro-F1, and evidence micro-F1 of the base and fine-tuned models on the test split, overall and for inclusion and exclusion criteria}{figure.3}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Confusion matrices on the test split for the base model (top row) and the fine-tuned model (bottom row): overall, inclusion criteria, and exclusion criteria. Rows are gold labels and columns are predictions.}}{7}{figure.4}\protected@file@percent }
+\newlabel{fig:conf}{{4}{7}{Confusion matrices on the test split for the base model (top row) and the fine-tuned model (bottom row): overall, inclusion criteria, and exclusion criteria. Rows are gold labels and columns are predictions}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Confusion Matrix of the Fine-Tuned Model on the Test Split (Rows: Gold, Columns: Predicted). Abbreviations: inc.\ = included, n.inc.\ = not included, NEI = not enough information, N/A = not applicable, n.exc.\ = not excluded.}}{7}{table.8}\protected@file@percent }
+\newlabel{tab:conf}{{VIII}{7}{Confusion Matrix of the Fine-Tuned Model on the Test Split (Rows: Gold, Columns: Predicted). Abbreviations: inc.\ = included, n.inc.\ = not included, NEI = not enough information, N/A = not applicable, n.exc.\ = not excluded}{table.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Evidence Localization}{7}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Errors of the Fine-Tuned Model on the Test Split by Type}}{8}{table.9}\protected@file@percent }
+\newlabel{tab:errtypes}{{IX}{8}{Errors of the Fine-Tuned Model on the Test Split by Type}{table.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Error Analysis}{8}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}KV-Cached Decoding}{8}{subsection.5.5}\protected@file@percent }
+\newlabel{sec:kvres}{{\mbox  {V-E}}{8}{KV-Cached Decoding}{subsection.5.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-F}}Tiled Attention}{8}{subsection.5.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-G}}Speculative Decoding}{8}{subsection.5.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces Twelve Test Errors of the Fine-Tuned Model (Annotation Identifier, Criterion Type, Gold and Predicted Label)}}{9}{table.10}\protected@file@percent }
+\newlabel{tab:cases}{{X}{9}{Twelve Test Errors of the Fine-Tuned Model (Annotation Identifier, Criterion Type, Gold and Predicted Label)}{table.10}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XI}{\ignorespaces KV-Cached Versus Uncached Greedy Decoding (Tesla T4, Half Precision, Batch Size 1; Tokens Identical in All Rows)}}{9}{table.11}\protected@file@percent }
+\newlabel{tab:kv}{{XI}{9}{KV-Cached Versus Uncached Greedy Decoding (Tesla T4, Half Precision, Batch Size 1; Tokens Identical in All Rows)}{table.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Throughput (left, logarithmic axis) and peak extra memory (right) of uncached and KV-cached greedy decoding for the six length configurations.}}{9}{figure.5}\protected@file@percent }
+\newlabel{fig:kv}{{5}{9}{Throughput (left, logarithmic axis) and peak extra memory (right) of uncached and KV-cached greedy decoding for the six length configurations}{figure.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XII}{\ignorespaces Absolute Error of Tiled Attention Against a Float64 Reference (Range over Eight Cases)}}{9}{table.12}\protected@file@percent }
+\newlabel{tab:attnerr}{{XII}{9}{Absolute Error of Tiled Attention Against a Float64 Reference (Range over Eight Cases)}{table.12}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XIII}{\ignorespaces Attention Speed and Memory (Tesla T4, Half Precision, Causal, 12 Heads, Head Dimension 128; Time in ms, Extra Memory in MiB)}}{10}{table.13}\protected@file@percent }
+\newlabel{tab:attnbench}{{XIII}{10}{Attention Speed and Memory (Tesla T4, Half Precision, Causal, 12 Heads, Head Dimension 128; Time in ms, Extra Memory in MiB)}{table.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Time (left) and peak extra memory (right) of the reference, tiled, and PyTorch attention backends against sequence length, on logarithmic axes.}}{10}{figure.6}\protected@file@percent }
+\newlabel{fig:attn}{{6}{10}{Time (left) and peak extra memory (right) of the reference, tiled, and PyTorch attention backends against sequence length, on logarithmic axes}{figure.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {XIV}{\ignorespaces Speculative Decoding on 40 Real Validation Prompts (Baseline: Cached Greedy, 24.9 tok/s; Acc. = Draft Acceptance; $\tau $ = Tokens per Round)}}{10}{table.14}\protected@file@percent }
+\newlabel{tab:spec}{{XIV}{10}{Speculative Decoding on 40 Real Validation Prompts (Baseline: Cached Greedy, 24.9 tok/s; Acc. = Draft Acceptance; $\tau $ = Tokens per Round)}{table.14}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-H}}Application}{10}{subsection.5.8}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {7}{\ignorespaces Draft acceptance rate (left) and speedup over cached greedy decoding (right) against draft length $k$, for real validation prompts (top) and synthetic long prompts (bottom). Crosses mark the library assisted-generation reference at $k=4$.}}{11}{figure.7}\protected@file@percent }
+\newlabel{fig:spec}{{7}{11}{Draft acceptance rate (left) and speedup over cached greedy decoding (right) against draft length $k$, for real validation prompts (top) and synthetic long prompts (bottom). Crosses mark the library assisted-generation reference at $k=4$}{figure.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VI}Limitations}{11}{section.6}\protected@file@percent }
+\newlabel{sec:limits}{{VI}{11}{Limitations}{section.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {VII}Conclusion}{11}{section.7}\protected@file@percent }
+\newlabel{sec:conclusion}{{VII}{11}{Conclusion}{section.7}{}}
+\@writefile{toc}{\contentsline {section}{Appendix\nobreakspace  A: AI Assistance Statement}{11}{section*.1}\protected@file@percent }
+\bibstyle{IEEEtran}
+\bibdata{references}
+\bibcite{trialgpt}{1}
+\bibcite{nievas}{2}
+\bibcite{dataset}{3}
+\bibcite{lora}{4}
+\bibcite{qlora}{5}
+\bibcite{onlinesoftmax}{6}
+\bibcite{flash1}{7}
+\bibcite{flash2}{8}
+\bibcite{vaswani}{9}
+\bibcite{specdec}{10}
+\bibcite{specsamp}{11}
+\bibcite{qwen25}{12}
+\bibcite{gqa}{13}
+\bibcite{rope}{14}
+\bibcite{gradio}{15}
+\bibcite{transformers}{16}
+\@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Browser application. (a) Screening tab with criterion-level results and cited evidence. (b) Exported HTML report with disclaimer, outcome, and provenance. (c) Benchmark tab comparing the three decoding modes live.}}{12}{figure.8}\protected@file@percent }
+\newlabel{fig:app}{{8}{12}{Browser application. (a) Screening tab with criterion-level results and cited evidence. (b) Exported HTML report with disclaimer, outcome, and provenance. (c) Benchmark tab comparing the three decoding modes live}{figure.8}{}}
+\@writefile{toc}{\contentsline {section}{References}{12}{section*.2}\protected@file@percent }
+\gdef \@abspage@last{12}

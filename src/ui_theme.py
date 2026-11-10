@@ -655,4 +655,140 @@ body {
     border: 1px dashed #CBD5E1 !important;
     background: #F8FAFC !important;
 }
+
+/* ============================================================
+   FIX: Gradio .block wrappers must not impose white/grey
+   backgrounds inside our custom coloured cards
+   ============================================================ */
+
+/* -- Blue card: strip all Gradio block chrome -- */
+.card-blue .block,
+.card-blue .wrap,
+.card-blue .block.padded,
+.card-blue .hide-container,
+.card-blue .gap,
+.card-blue > .gap,
+.card-blue > * > .gap {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* -- Black card: transparent block chrome + readable inputs -- */
+.card-black .block,
+.card-black .wrap,
+.card-black .block.padded,
+.card-black .hide-container,
+.card-black .gap,
+.card-black > .gap,
+.card-black > * > .gap {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+}
+
+/* Dropdown / select inside black card */
+.card-black select,
+.card-black .gr-dropdown,
+.card-black .border-none,
+.card-black [data-testid="dropdown"] {
+    background-color: #1A1A1A !important;
+    color: #FFFFFF !important;
+    border: 1px solid #3A3A3A !important;
+    border-radius: 12px !important;
+}
+
+/* Text input inside black card (fallback) */
+.card-black input,
+.card-black input[type="text"] {
+    background-color: #1A1A1A !important;
+    color: #FFFFFF !important;
+    border: 1px solid #3A3A3A !important;
+    border-radius: 12px !important;
+}
+.card-black input::placeholder {
+    color: #9CA3AF !important;
+}
+
+/* SVG icons / arrows (dropdown chevron) inside black card */
+.card-black .icon svg,
+.card-black .icon svg path,
+.card-black svg.icon path {
+    stroke: #E5E7EB !important;
+    fill: #E5E7EB !important;
+}
+
+/* ALL text inside the black card must be light */
+.card-black,
+.card-black *,
+.card-black span,
+.card-black label,
+.card-black p,
+.card-black div,
+.card-black .svelte-1gfkfd6,
+.card-black .svelte-1plpy97,
+.card-black [class*="svelte-"] {
+    color: #E5E7EB !important;
+}
+/* Keep accent colours */
+.card-black .black-card-title { color: #FFFFFF !important; }
+.card-black .black-card-desc  { color: #9CA3AF !important; }
+
+/* -- Grey card: white block wrappers sit nicely on grey bg -- */
+.card-grey .block,
+.card-grey .wrap {
+    background-color: #FFFFFF !important;
+    border-radius: 16px !important;
+    border: 1.5px solid #E2E8F0 !important;
+}
+/* Labels / spans in grey card remain dark */
+.card-grey label,
+.card-grey span,
+.card-grey p,
+.card-grey .svelte-1gfkfd6 {
+    color: #111827 !important;
+}
+
+/* -- Bento-card-white: ensure all text is dark -- */
+.bento-card-white,
+.bento-card-white .block,
+.bento-card-white .wrap {
+    background-color: #FFFFFF !important;
+}
+.bento-card-white *,
+.bento-card-white p,
+.bento-card-white span,
+.bento-card-white label,
+.bento-card-white h1,
+.bento-card-white h2,
+.bento-card-white h3,
+.bento-card-white li,
+.bento-card-white td,
+.bento-card-white th {
+    color: #111827 !important;
+}
+
+/* Strip block chrome inside bento-card-white too */
+.bento-card-white .block,
+.bento-card-white .hide-container {
+    border: none !important;
+    box-shadow: none !important;
+    background: transparent !important;
+}
+
+/* -- Tabs content area: transparent bg so the shell shows -- */
+.bento-tabs > div[role="tabpanel"] {
+    background: transparent !important;
+    padding: 0 !important;
+    border: none !important;
+}
+
+/* Scrollbar: subtle */
+::-webkit-scrollbar { width: 7px; height: 7px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 9999px; }
 """
