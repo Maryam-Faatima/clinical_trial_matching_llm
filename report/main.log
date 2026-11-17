@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.22)  10 NOV 2026 17:53
+This is pdfTeX, Version 3.141592653-2.6-1.40.28 (MiKTeX 25.12) (preloaded format=pdflatex 2026.10.22)  10 NOV 2026 19:54
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -6,12 +6,9 @@ entering extended mode
 (main.tex
 LaTeX2e <2025-11-01>
 L3 programming layer <2025-12-24>
-! Interruption.
-<argument> \__file_size:n {IEEEtran.cls}
-                                        
-l.2 \usepackage
-               {cite}
-? - See the "IEEEtran_HOWTO" manual for usage information.
+(C:\Users\fm216\AppData\Local\Programs\MiKTeX\tex/latex/ieeetran\IEEEtran.cls
+Document Class: IEEEtran 2015/08/26 V1.8b by Michael Shell
+-- See the "IEEEtran_HOWTO" manual for usage information.
 -- http://www.michaelshell.org/tex/ieeetran/
 \@IEEEtrantmpdimenA=\dimen148
 \@IEEEtrantmpdimenB=\dimen149
@@ -888,6 +885,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 325--326
 l[]matching[]
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 325--326
+\OT1/ptm/m/n/10 demon-stra-tion is at []$https : / / www . youtube . com / watc
+h ? v =
+ []
+
 [5]
 <figures/training_curves.png, id=246, 433.62pt x 252.945pt>
 File: figures/training_curves.png Graphic file (type png)
@@ -905,57 +908,50 @@ File: figures/confusion_test.png Graphic file (type png)
 <use figures/confusion_test.png>
 Package pdftex.def Info: figures/confusion_test.png  used on input line 433.
 (pdftex.def)             Requested size: 464.39685pt x 285.77986pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [6 <./figures/training_curves.png>]
+Underfull \vbox (badness 6110) has occurred while \output is active []
+
+
 
 LaTeX Warning: Text page 7 contains only floats.
 
-
-Underfull \vbox (badness 4316) has occurred while \output is active []
-
- [7 <./figures/before_after_test.png> <./figures/confusion_test.png>]
-<figures/kv_benchmark.png, id=279, 722.7pt x 260.172pt>
+[7 <./figures/before_after_test.png> <./figures/confusion_test.png>]
+<figures/kv_benchmark.png, id=280, 722.7pt x 260.172pt>
 File: figures/kv_benchmark.png Graphic file (type png)
 <use figures/kv_benchmark.png>
 Package pdftex.def Info: figures/kv_benchmark.png  used on input line 524.
 (pdftex.def)             Requested size: 412.80157pt x 148.6092pt.
-<figures/attention_benchmark.png, id=283, 722.7pt x 274.626pt>
+<figures/attention_benchmark.png, id=284, 722.7pt x 274.626pt>
 File: figures/attention_benchmark.png Graphic file (type png)
 <use figures/attention_benchmark.png>
 Package pdftex.def Info: figures/attention_benchmark.png  used on input line 57
 1.
 (pdftex.def)             Requested size: 412.80157pt x 156.8653pt.
  [8]
-Underfull \vbox (badness 3417) has occurred while \output is active []
-
-
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [9 <./figures/kv_benchmark.png>]
-<figures/spec_from_log.png, id=308, 722.7pt x 505.89pt>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+<figures/spec_from_log.png, id=309, 722.7pt x 505.89pt>
 File: figures/spec_from_log.png Graphic file (type png)
 <use figures/spec_from_log.png>
 Package pdftex.def Info: figures/spec_from_log.png  used on input line 613.
 (pdftex.def)             Requested size: 319.91748pt x 223.94315pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
  [10 <./figures/attention_benchmark.png>]
-<figures/screenshot_screening.png, id=316, 963.6pt x 542.025pt>
+<figures/screenshot_screening.png, id=317, 963.6pt x 542.025pt>
 File: figures/screenshot_screening.png Graphic file (type png)
 <use figures/screenshot_screening.png>
 Package pdftex.def Info: figures/screenshot_screening.png  used on input line 6
 23.
 (pdftex.def)             Requested size: 165.12378pt x 92.8791pt.
-<figures/screenshot_report.png, id=317, 963.6pt x 542.025pt>
+<figures/screenshot_report.png, id=318, 963.6pt x 542.025pt>
 File: figures/screenshot_report.png Graphic file (type png)
 <use figures/screenshot_report.png>
 Package pdftex.def Info: figures/screenshot_report.png  used on input line 624.
 
 (pdftex.def)             Requested size: 165.12378pt x 92.8791pt.
-<figures/screenshot_benchmark.png, id=318, 1284.8pt x 1647.15375pt>
+<figures/screenshot_benchmark.png, id=319, 1284.8pt x 1647.15375pt>
 File: figures/screenshot_benchmark.png Graphic file (type png)
 <use figures/screenshot_benchmark.png>
 Package pdftex.def Info: figures/screenshot_benchmark.png  used on input line 6
@@ -1034,9 +1030,9 @@ b><C:/Users/fm216/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmbi8a.p
 fb><C:/Users/fm216/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmr8a.p
 fb><C:/Users/fm216/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/utmri8a.
 pfb>
-Output written on main.pdf (12 pages, 1490510 bytes).
+Output written on main.pdf (12 pages, 1490641 bytes).
 PDF statistics:
- 454 PDF objects out of 1000 (max. 8388607)
+ 455 PDF objects out of 1000 (max. 8388607)
  89 named destinations out of 1000 (max. 500000)
  266 words of extra memory for PDF output out of 10000 (max. 10000000)
 

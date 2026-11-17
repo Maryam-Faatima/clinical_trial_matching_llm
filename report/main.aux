@@ -82,22 +82,21 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-B}}Held-Out Test Results}{6}{subsection.5.2}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {VI}{\ignorespaces Test Results ($n=206$; Inclusion $n=75$, Exclusion $n=131$)}}{6}{table.6}\protected@file@percent }
 \newlabel{tab:test}{{VI}{6}{Test Results ($n=206$; Inclusion $n=75$, Exclusion $n=131$)}{table.6}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Per-Class Results of the Fine-Tuned Model on the Test Split}}{6}{table.7}\protected@file@percent }
-\newlabel{tab:perclass}{{VII}{6}{Per-Class Results of the Fine-Tuned Model on the Test Split}{table.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Evidence Localization}{6}{subsection.5.3}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Accuracy, macro-F1, and evidence micro-F1 of the base and fine-tuned models on the test split, overall and for inclusion and exclusion criteria.}}{7}{figure.3}\protected@file@percent }
 \newlabel{fig:beforeafter}{{3}{7}{Accuracy, macro-F1, and evidence micro-F1 of the base and fine-tuned models on the test split, overall and for inclusion and exclusion criteria}{figure.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Confusion matrices on the test split for the base model (top row) and the fine-tuned model (bottom row): overall, inclusion criteria, and exclusion criteria. Rows are gold labels and columns are predictions.}}{7}{figure.4}\protected@file@percent }
 \newlabel{fig:conf}{{4}{7}{Confusion matrices on the test split for the base model (top row) and the fine-tuned model (bottom row): overall, inclusion criteria, and exclusion criteria. Rows are gold labels and columns are predictions}{figure.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {VII}{\ignorespaces Per-Class Results of the Fine-Tuned Model on the Test Split}}{7}{table.7}\protected@file@percent }
+\newlabel{tab:perclass}{{VII}{7}{Per-Class Results of the Fine-Tuned Model on the Test Split}{table.7}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {VIII}{\ignorespaces Confusion Matrix of the Fine-Tuned Model on the Test Split (Rows: Gold, Columns: Predicted). Abbreviations: inc.\ = included, n.inc.\ = not included, NEI = not enough information, N/A = not applicable, n.exc.\ = not excluded.}}{7}{table.8}\protected@file@percent }
 \newlabel{tab:conf}{{VIII}{7}{Confusion Matrix of the Fine-Tuned Model on the Test Split (Rows: Gold, Columns: Predicted). Abbreviations: inc.\ = included, n.inc.\ = not included, NEI = not enough information, N/A = not applicable, n.exc.\ = not excluded}{table.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-C}}Evidence Localization}{7}{subsection.5.3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {IX}{\ignorespaces Errors of the Fine-Tuned Model on the Test Split by Type}}{8}{table.9}\protected@file@percent }
 \newlabel{tab:errtypes}{{IX}{8}{Errors of the Fine-Tuned Model on the Test Split by Type}{table.9}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-D}}Error Analysis}{8}{subsection.5.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-E}}KV-Cached Decoding}{8}{subsection.5.5}\protected@file@percent }
 \newlabel{sec:kvres}{{\mbox  {V-E}}{8}{KV-Cached Decoding}{subsection.5.5}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-F}}Tiled Attention}{8}{subsection.5.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-G}}Speculative Decoding}{8}{subsection.5.7}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {X}{\ignorespaces Twelve Test Errors of the Fine-Tuned Model (Annotation Identifier, Criterion Type, Gold and Predicted Label)}}{9}{table.10}\protected@file@percent }
 \newlabel{tab:cases}{{X}{9}{Twelve Test Errors of the Fine-Tuned Model (Annotation Identifier, Criterion Type, Gold and Predicted Label)}{table.10}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {XI}{\ignorespaces KV-Cached Versus Uncached Greedy Decoding (Tesla T4, Half Precision, Batch Size 1; Tokens Identical in All Rows)}}{9}{table.11}\protected@file@percent }
@@ -106,6 +105,7 @@
 \newlabel{fig:kv}{{5}{9}{Throughput (left, logarithmic axis) and peak extra memory (right) of uncached and KV-cached greedy decoding for the six length configurations}{figure.5}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {XII}{\ignorespaces Absolute Error of Tiled Attention Against a Float64 Reference (Range over Eight Cases)}}{9}{table.12}\protected@file@percent }
 \newlabel{tab:attnerr}{{XII}{9}{Absolute Error of Tiled Attention Against a Float64 Reference (Range over Eight Cases)}{table.12}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {\mbox  {V-G}}Speculative Decoding}{9}{subsection.5.7}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {XIII}{\ignorespaces Attention Speed and Memory (Tesla T4, Half Precision, Causal, 12 Heads, Head Dimension 128; Time in ms, Extra Memory in MiB)}}{10}{table.13}\protected@file@percent }
 \newlabel{tab:attnbench}{{XIII}{10}{Attention Speed and Memory (Tesla T4, Half Precision, Causal, 12 Heads, Head Dimension 128; Time in ms, Extra Memory in MiB)}{table.13}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6}{\ignorespaces Time (left) and peak extra memory (right) of the reference, tiled, and PyTorch attention backends against sequence length, on logarithmic axes.}}{10}{figure.6}\protected@file@percent }
